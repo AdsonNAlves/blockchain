@@ -74,9 +74,9 @@ class Block:
 def dump_blockchain (self):
     
     print ("Number of blocks in the chain: " + "4")
-    for x in range (len(TPCoins)):
-        block_temp = TPCoins[x]
-        if x == len(TPCoins)-1:
+    for x in range (len(QuatiCoin)):
+        block_temp = QuatiCoin[x]
+        if x == len(QuatiCoin)-1:
             print ("block # " + str(x))
     for transaction in block_temp.verified_transactions:
         display_transaction (transaction)
@@ -99,7 +99,7 @@ def mine(message, difficulty=1):
 last_block_hash = ""
 last_transaction_index = 0
 transactions = []
-TPCoins = []
+QuatiCoin = []
 
 jose = Client()
 luiz = Client()
@@ -160,9 +160,9 @@ block0.verified_transactions.append(t0)
 digest = hash(block0)
 
 last_block_hash = digest
-TPCoins.append(block0)
+QuatiCoin.append(block0)
 
-dump_blockchain(TPCoins)
+dump_blockchain(QuatiCoin)
 
 
 # Miner 1
@@ -179,10 +179,10 @@ block.previous_block_hash = last_block_hash
 
 block.Nonce = mine(block, 2)
 digest = hash(block)
-TPCoins.append(block)
+QuatiCoin.append(block)
 last_block_hash = digest
 
-dump_blockchain(TPCoins)
+dump_blockchain(QuatiCoin)
 
 # Miner 2
 block = Block()
@@ -198,10 +198,10 @@ block.previous_block_hash = last_block_hash
 
 block.Nonce = mine(block, 2)
 digest = hash(block)
-TPCoins.append(block)
+QuatiCoin.append(block)
 last_block_hash = digest
 
-dump_blockchain(TPCoins)
+dump_blockchain(QuatiCoin)
 
 # Miner 3
 block = Block()
@@ -217,8 +217,8 @@ block.previous_block_hash = last_block_hash
 
 block.Nonce = mine(block, 2)
 digest = hash(block)
-TPCoins.append(block)
+QuatiCoin.append(block)
 last_block_hash = digest
 
 
-dump_blockchain(TPCoins)
+dump_blockchain(QuatiCoin)
