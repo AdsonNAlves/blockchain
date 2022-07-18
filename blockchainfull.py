@@ -70,18 +70,7 @@ class Block:
         self.verified_transactions = []
         self.previous_block_hash = ""
         self.Nonce = ""
-
-def dump_blockchain (self):
-    
-    print ("Number of blocks in the chain: " + "4")
-    for x in range (len(QuatiCoin)):
-        block_temp = QuatiCoin[x]
-        if x == len(QuatiCoin)-1:
-            print ("block # " + str(x))
-    for transaction in block_temp.verified_transactions:
-        display_transaction (transaction)
-        print('--------------')
-        print('=====================================')
+last_block_hash = ""
 
 def sha256(message):
     return hashlib.sha256(message.encode('ascii')).hexdigest()
@@ -95,19 +84,12 @@ def mine(message, difficulty=1):
         if digest.startswith(prefix):
             return digest
 
-
-last_block_hash = ""
-last_transaction_index = 0
-transactions = []
-QuatiCoin = []
-
 jose = Client()
 luiz = Client()
 carlos = Client()
 ana = Client()
 
-# jose = Client()
-
+transactions = []
 t1 = Transaction(jose,luiz.identity,15.0)
 t1.sign_transaction()
 transactions.append(t1)
@@ -150,6 +132,7 @@ transactions.append(t10)
 
 
 # Miner 0
+# jose = Client()
 t0 = Transaction("Genesis",jose.identity,500.0)
 
 block0 = Block()
@@ -160,11 +143,27 @@ block0.verified_transactions.append(t0)
 digest = hash(block0)
 
 last_block_hash = digest
+
+QuatiCoin = []
+
+def dump_blockchain (self):
+    
+    print ("Number of blocks in the chain: " + "4")
+    for x in range (len(QuatiCoin)):
+        block_temp = QuatiCoin[x]
+        if x == len(QuatiCoin)-1:
+            print ("block # " + str(x))
+    for transaction in block_temp.verified_transactions:
+        display_transaction (transaction)
+        print('--------------')
+        print('=====================================')
+
+
 QuatiCoin.append(block0)
 
 dump_blockchain(QuatiCoin)
 
-
+last_transaction_index = 0
 # Miner 1
 block = Block()
 
